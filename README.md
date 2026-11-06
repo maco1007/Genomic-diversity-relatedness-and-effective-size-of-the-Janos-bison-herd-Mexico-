@@ -29,6 +29,7 @@ Genotype files (Dryad)
 Everything is also listed with md5 checksums in MD5SUMS.txt inside each archive. "Ind." is the number of individuals; PLINK sets are .bed/.bim/.fam triplets.
 
 genotipos_dryad/ (TAMU3 pipeline)
+
 Folder	Content	SNPs	Ind.
 TAMU3_prefiltro_96ind/	populations_96ind.snps.vcf — Stacks output before individual filtering	33,912	96
 TAMU3_54305_77ind/	populations.snps.vcf — final filtered VCF; final.ped/.map — same data in PLINK text format	54,305	77
@@ -37,7 +38,9 @@ TAMU3_ADMIXTURE/	CON_podado (with duplicates), SIN_podado — LD-pruned input fo
 TAMU3_PCA/	CON_pca.*, SIN_pca.* — PLINK eigenvalues/eigenvectors (PC1 = 5.62 %, PC2 = 3.97 % in CON_pca)	—	77 / 75
 TAMU3_3089_genes/	bison_est_podado (PLINK) and snps_filtrados_tamu3.vcf/.log — SNP set used for the gene-level analyses	3,089 (PLINK set)	77
 TAMU3_completo/	bison_completo, bison_completo_hwe, bison_completo_nodup — complete-case panel used by an earlier figure script (bison_completo_nodup: 5,598 SNPs × 75 ind.); duplicados_fuera.txt lists the removed duplicates	5,598 (nodup)	75 (nodup)
+
 genotipos_dryad_umd1_denovo/ (UMD1.0 and de novo pipelines)
+
 Folder	Content	SNPs	Ind.
 UMD1_95ind/	populations.snps.vcf (Stacks output) and bison_binary (PLINK, same markers)	5,846	95
 UMD1_final/	matriz_umd1_final_76 and matriz_umd1_final_74 (duplicates removed)	5,846	76 / 74
@@ -47,23 +50,12 @@ Ne_raw/	.raw genotype matrices used by the LD-Ne scripts: matriz_umd1_final_76/7
 Stacks v2.65, PLINK v1.9.0-b.8, ADMIXTURE (Alexander et al. 2009), BWA-MEM, bedtools, Liftoff, R (ggplot2, clusterProfiler; g:Profiler for GO), Python (NumPy, pandas).
 
 Reproducing the analyses
-Download the reads from SRA (PRJNA1543005) and the reference genomes (TAMU_Bison_Bison_3.0, Bison_UMD1.0). To start from genotypes, download the Dryad archives instead and skip to step 3.
+Download the reads from SRA (PRJNA1543005) and the reference genomes (TAMU_Bison_Bison_3.0, Bison_UMD1.0).
 Run alignment and Stacks (scripts/.../run_radtags*, alineamiento_bwa*, run_gstacks*).
 Run filtering, PCA, ADMIXTURE and Ne on the PLINK files listed above.
 
-Scripts were run on a SLURM cluster (heavy jobs with sbatch) and contain absolute cluster paths (/scratch/marco/bison, /scratch/jaahzel/...) that must be edited before rerunning. The gnomAD v4.1 constraint metrics and the sample-to-population map (popmap) are inputs that are not redistributed here.
 
 To check a download: cd <archive folder> && md5sum -c MD5SUMS.txt.
-
-Data notes
-Sample IDs match the manuscript (e.g., 384D_B11). Sample metadata (target population, sex, age, DNA quality) are in the Dryad Excel sheet; they contain animal identifiers only, no personal data.
-The identity of the near-duplicate sample pairs should be verified before using these data for pedigree or management decisions.
-Ne_raw/denovo_sin_podar_71.raw is an intermediate file and was not used for the reported estimates.
-Citation
-
-Licence
-
-Data: CC0 (Dryad). Code: [choose and add a LICENSE file, e.g., MIT].
 
 Contact
 
